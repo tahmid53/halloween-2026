@@ -441,6 +441,7 @@
         <li><b>Watch the reveal.</b> Winners are announced one category at a time, with Best Overall last.</li>
       </ol>
     </section>
+    <button type="button" class="btn ghost block share" data-act="shareSite">Share this site</button>
     <p class="foot">Running the party? <a href="#host">Open host tools</a></p>`;
   }
 
@@ -715,6 +716,7 @@
       <div class="host-head">
         <p class="kicker">Host tools · Only on this phone</p>
         <h1 class="title">Run the games</h1>
+        <button type="button" class="btn ghost block" data-act="shareSite">Show the site’s QR code</button>
       </div>
 
       <section class="panel" id="p-guests">
@@ -1158,6 +1160,12 @@
   const actions = {
     close: () => closeLayer(),
     copy: el => copyText(el.dataset.text, el.dataset.label || 'Link'),
+    shareSite: () => openQR({
+      title: 'Share Halloween Night',
+      body: 'Anyone can scan this to open the site and read the rules. Secret missions still come from the host.',
+      url: BASE,
+      copyLabel: 'Copy site link',
+    }),
     reveal: el => { const d = el.closest('.dossier'); setReveal(d, d.dataset.revealed !== 'true'); },
     killed: () => goOut(false),
     leaving: () => goOut(true),
